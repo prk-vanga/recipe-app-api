@@ -8,17 +8,8 @@ COPY ./requirements.dev.txt /tmp/requirements.dev.txt
 COPY ./app /app
 WORKDIR /app
 EXPOSE 8000
-
-# RUN python -m venv /py && \
-#     /py/bin/pip install --upgrade pip && \
-#     /py/bin/pip install -r /tmp/requirements.txt && \
-#     rm -rf /tmp ** \
-#     adduser \
-#         --disabled-password \
-#         --no-create-home \
-#         django-user
-
 ARG DEV=false
+
 RUN echo "Creating virtual environment" && python -m venv /py \
     && echo "Upgrading pip" && /py/bin/pip install --upgrade pip \
     && echo "Adding dependency packages postresql-client" && apk add --update --no-cache postgresql-client \
