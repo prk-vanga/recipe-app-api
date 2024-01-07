@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
+    'rest_framework',
+    'drf_spectacular',
 
 ]
 
@@ -131,5 +133,15 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+# Below setting we can use to configure our Custom User Model
+# for customizations of user through Djangno Admin / model managers.
 AUTH_USER_MODEL = 'core.User'
+
+
+# Below settubg Configures rest_framework with drf_spectacular library
+# to generate schemas for API documentation.
+# The generated schemas then we can use with swagger tool
+
+REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+}
